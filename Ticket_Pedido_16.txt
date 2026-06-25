@@ -1,0 +1,37 @@
+========================================
+             UTP CAFETERIA              
+========================================
+Pedido ID : 16
+Estado    : PENDIENTE
+----------------------------------------
+Producto             Cant  Subtotal  
+----------------------------------------
+Espresso Doble       1     S/.4.50      
+Latte Mediano        1     S/.5.50      
+Capuccino Grande     1     S/.7.50      
+Americano Regular    1     S/.4.00      
+Mocaccino Especial   1     S/.8.00      
+Frappé de Vainilla   1     S/.9.50      
+Chicha Helada Ja..   1     S/.11.00     
+Chicha Helada Vaso   1     S/.4.00      
+Iced Tea Limón       1     S/.4.50      
+Jugo de Naranja      1     S/.6.00      
+Jugo de Fresa y ..   1     S/.7.50      
+Limonada Frozen      1     S/.6.50      
+Croissant Manjar     1     S/.4.00      
+Muffin Arándanos     1     S/.4.50      
+Porción Torta Ch..   1     S/.8.50      
+Pie de Limón         1     S/.7.50      
+Alfajor de la Casa   1     S/.3.00      
+Cheesecake de Fr..   1     S/.8.50      
+Sándwich Triple      1     S/.5.50      
+Sándwich de Pollo    1     S/.6.50      
+Sándwich de Asado    1     S/.9.00      
+Butifarra Tradic..   1     S/.8.00      
+Croissant de Jam..   1     S/.6.00      
+Empanada de Carne    1     S/.4.50      
+----------------------------------------
+TOTAL A PAGAR:           S/.154.00
+========================================
+       ¡Gracias por su preferencia!     
+========================================

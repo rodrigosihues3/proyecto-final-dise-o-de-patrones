@@ -1,0 +1,22 @@
+========================================
+             UTP CAFETERIA              
+========================================
+Pedido ID : 14
+Estado    : PENDIENTE
+----------------------------------------
+Producto             Cant  Subtotal  
+----------------------------------------
+Latte Mediano        2     S/.8.00      
+Espresso Doble       2     S/.9.00      
+Capuccino Grande     2     S/.13.00     
+Sándwich Triple      1     S/.5.50      
+Sándwich Pollo       1     S/.6.00      
+Muffin Arándanos     1     S/.4.00      
+Croissant Manjar     1     S/.4.50      
+Chicha Helada        2     S/.7.00      
+Iced Tea Limón       2     S/.8.00      
+----------------------------------------
+TOTAL A PAGAR:           S/.65.00
+========================================
+       ¡Gracias por su preferencia!     
+========================================
