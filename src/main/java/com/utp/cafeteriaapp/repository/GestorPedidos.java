@@ -6,10 +6,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Usuario
- */
 public class GestorPedidos {
 
     private static final String ARCHIVO_DAT = "historial_pedidos.dat";

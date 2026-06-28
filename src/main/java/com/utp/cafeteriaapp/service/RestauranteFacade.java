@@ -5,10 +5,6 @@ import com.utp.cafeteriaapp.model.Producto;
 import com.utp.cafeteriaapp.repository.GestorPedidos;
 import java.util.List;
 
-/**
- *
- * @author Usuario
- */
 public class RestauranteFacade {
 
     private Cocina cocina;
@@ -19,10 +15,10 @@ public class RestauranteFacade {
     public RestauranteFacade() {
         this.cocina = new Cocina();
         this.caja = CajaRegistradora.getInstancia();
-        // Carga el historial previo desde el archivo .dat de forma automática
+        // Carga el historial previo desde el archivo .dat
         this.historialGeneral = GestorPedidos.cargarPedidos();
 
-        // Determina el ID correlativo autoincremental correcto para el siguiente pedido
+        // Determina el ID para el siguiente pedido
         this.contadorSiguientePedido = historialGeneral.size() + 1;
 
         // Sincroniza el dinero histórico de las ventas previas cargadas en la caja
@@ -33,45 +29,38 @@ public class RestauranteFacade {
         this.caja.setTotalDinero(saldoHistorico);
     }
 
-    /**
-     * Genera un nuevo objeto Pedido inicializado con el ID autoincremental
-     * correcto.
-     */
+    // Genera un nuevo objeto Pedido inicializado con el ID autoincremental
     public Pedido crearNuevoPedido() {
         return new Pedido(contadorSiguientePedido++);
     }
 
-    /**
-     * Procesa de forma atómica el flujo de facturación, persistencia y envío a
-     * cocina.
-     */
     public void procesarCobroYDespacho(Pedido pedido) {
         if (pedido == null || pedido.getListaProductos().isEmpty()) {
             return;
         }
 
-        // 1. Registrar el ingreso financiero
+        // Registrar el ingreso financiero
         caja.registrarIngreso(pedido.calcularTotal());
 
-        // 2. Incrementar contadores para el algoritmo "Top Ventas"
+        // Incrementar contadores de ventas de productos
         for (int i = 0; i < pedido.getListaProductos().size(); i++) {
             Producto prod = pedido.getListaProductos().get(i);
             int cantidad = pedido.getListaCantidades().get(i);
             prod.incrementarVentas(cantidad);
         }
 
-        // 3. Añadir al historial general y persistir en el archivo binario (.dat)
+        // Añade al historial y persistir en el archivo binario .dat
         historialGeneral.add(pedido);
         GestorPedidos.guardarPedidos(historialGeneral);
 
-        // 4. Emitir el ticket físico simulado (.txt)
+        // Emite el ticket físico simulado (.txt)
         GestorPedidos.emitirTicket(pedido);
 
-        // 5. Transferir la orden a la cola de la cocina
+        // Transfiere la orden a la cola de la cocina
         cocina.agregarPedido(pedido);
     }
 
-    // Getters directos para conectar las ventanas Swing
+    // Getters para conectar las ventanas Swing
     public Cocina getCocina() {
         return cocina;
     }

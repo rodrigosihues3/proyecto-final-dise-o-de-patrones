@@ -2,10 +2,6 @@ package com.utp.cafeteriaapp.model;
 
 import java.io.Serializable;
 
-/**
- *
- * @author Usuario
- */
 public class Producto implements Serializable {
     private static final long serialVersionUID = 1L;
 

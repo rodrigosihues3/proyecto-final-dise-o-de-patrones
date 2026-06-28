@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 
 public class VentanaCocinaJFrame extends JFrame implements Observador {
 
+    // Variable para conectar con las funciones lógicas de todo el restaurante
     private RestauranteFacade fachada;
     private JPanel panelColaHorizontal;
     private final SimpleDateFormat formatoHora = new SimpleDateFormat("hh:mm:ss a");
@@ -29,7 +30,7 @@ public class VentanaCocinaJFrame extends JFrame implements Observador {
     }
 
     private void configurarVentana() {
-        setTitle("UTP CAFETERIA - MONITOR DE COCINA");
+        setTitle("CAFETERIA - MONITOR DE COCINA");
         setSize(737, 700);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -86,7 +87,7 @@ public class VentanaCocinaJFrame extends JFrame implements Observador {
 
     private JPanel createTarjetaPedidoVisual(Pedido pedido) {
         JPanel tarjeta = new JPanel(new BorderLayout(0, 5));
-        tarjeta.setPreferredSize(new Dimension(240, 560)); // Ancho levemente ampliado para mejor empaque de textos
+        tarjeta.setPreferredSize(new Dimension(240, 560));
         tarjeta.setBackground(Color.WHITE);
         tarjeta.setBorder(BorderFactory.createLineBorder(new Color(0x4A, 0x35, 0x25), 1, true));
 
@@ -99,7 +100,7 @@ public class VentanaCocinaJFrame extends JFrame implements Observador {
         lblId.setFont(new Font("SansSerif", Font.BOLD, 18));
         lblId.setForeground(new Color(0x4A, 0x35, 0x25));
 
-        // 4. TAREA: Agregar hora de ingreso para priorización visual
+        // Hora de ingreso para priorización visual
         String horaIngreso = formatoHora.format(new Date());
         JLabel lblHora = new JLabel("Ingreso: " + horaIngreso, JLabel.LEFT);
         lblHora.setFont(new Font("SansSerif", Font.PLAIN, 12));
@@ -114,13 +115,13 @@ public class VentanaCocinaJFrame extends JFrame implements Observador {
         panelInfoTarjeta.add(lblTime);
         tarjeta.add(panelInfoTarjeta, BorderLayout.NORTH);
 
-        // 3. TAREA: Scroll interno y ajuste de líneas para productos largos
+        // Scroll interno y ajuste de líneas para productos largos
         JTextArea txtItems = new JTextArea();
         txtItems.setEditable(false);
         txtItems.setFont(new Font("MonoSpaced", Font.BOLD, 14));
         txtItems.setForeground(new Color(0x21, 0x21, 0x21));
-        txtItems.setLineWrap(true);        // Activa el salto de línea automático
-        txtItems.setWrapStyleWord(true);   // Corta por palabras enteras, no caracteres sueltos
+        txtItems.setLineWrap(true);
+        txtItems.setWrapStyleWord(true);
 
         List<Producto> productos = pedido.getListaProductos();
         List<Integer> cantidades = pedido.getListaCantidades();
@@ -136,25 +137,25 @@ public class VentanaCocinaJFrame extends JFrame implements Observador {
         scrollInternoCard.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         tarjeta.add(scrollInternoCard, BorderLayout.CENTER);
 
-        // 5. TAREA: Botón con diseño square y efecto hover interactivo
+        // Botón con diseño square y efecto hover interactivo
         JButton btnCompletado = new JButton("MARCAR COMPLETADO");
         btnCompletado.setBackground(new Color(0x1E, 0x39, 0x32));
         btnCompletado.setForeground(Color.WHITE);
         btnCompletado.setFont(new Font("SansSerif", Font.BOLD, 12));
         btnCompletado.setPreferredSize(new Dimension(0, 45));
         btnCompletado.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btnCompletado.putClientProperty("JButton.buttonType", "square"); // Forzar estilo angular limpio
+        btnCompletado.putClientProperty("JButton.buttonType", "square");
         btnCompletado.addActionListener(e -> fachada.getCocina().despacharPedido(pedido.getIdPedido()));
 
         btnCompletado.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                btnCompletado.setBackground(new Color(0x2D, 0x55, 0x4B)); // Tono verde más claro y llamativo
+                btnCompletado.setBackground(new Color(0x2D, 0x55, 0x4B));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                btnCompletado.setBackground(new Color(0x1E, 0x39, 0x32)); // Retorna al verde original
+                btnCompletado.setBackground(new Color(0x1E, 0x39, 0x32));
             }
         });
 

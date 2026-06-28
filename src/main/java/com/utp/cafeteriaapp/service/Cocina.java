@@ -4,10 +4,6 @@ import com.utp.cafeteriaapp.model.Pedido;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Usuario
- */
 public class Cocina {
 
     private List<Pedido> colaPedidosPendientes;
@@ -42,9 +38,7 @@ public class Cocina {
         notificarObservadores(); // Actualiza las pantallas en tiempo real
     }
 
-    /**
-     * Despacha un pedido de la cola activa por su ID.
-     */
+    // Despacha un pedido de la cola activa por su ID.
     public void despacharPedido(int idPedido) {
         Pedido pedidoEncontrado = null;
         for (Pedido p : colaPedidosPendientes) {
